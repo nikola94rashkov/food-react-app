@@ -2,6 +2,22 @@
 
 .article-recipe {
     position: relative;
+    box-shadow: 0 0px 10px 0px rgba($c-black, 0.1);
+    transition: all $t-duration;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:hover {
+        box-shadow: 0 0px 20px 0px rgba($c-black, 0.2);
+    }
+
+    h5 {
+        text-overflow: ellipsis; 
+        display: -webkit-box; 
+        -webkit-line-clamp: 2; 
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
     > a {
         position: absolute;
@@ -9,13 +25,14 @@
         left: 0;
         width: 100%;
         height: 100%;
+        z-index: 10;
     }
 
     .article__image {
         padding-bottom: 56.6%;
     }
 
-    .article__body {
+    .article__content {
         padding: 20px 15px;
         text-align: center;
     }

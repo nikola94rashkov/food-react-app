@@ -37,22 +37,34 @@ h6 {
 }
 
 .h1,
-h1 {}
+h1 {
+	font-size: 45px;
+}
 
 .h2,
-h2 {}
+h2 {
+	font-size: 40px;
+}
 
 .h3,
-h3 {}
+h3 {
+	font-size: 35px;
+}
 
 .h4,
-h4 {}
+h4 {
+	font-size: 30px;
+}
 
 .h5,
-h5 {}
+h5 {
+	font-size: 25px;
+}
 
 .h6,
-h6 {}
+h6 {
+	font-size: 20px;
+}
 
 p,
 ul,
@@ -77,4 +89,29 @@ dl:last-child,
 table:last-child,
 blockquote:last-child {
 	margin-bottom: 0;
+}
+
+.btn {
+	display: block;
+    border: none;
+    padding: 10px 20px;
+    margin: 0;
+    text-decoration: none;
+    background: $c-base;
+    color: $c-white;
+    font-family: sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+	transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	width: 100%;
+
+	&:hover {
+		background-color: $c-pink;
+	}
 }

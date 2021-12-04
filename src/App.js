@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 import Grid from './components/Grid/Grid';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/registration" element={<RegistrationView />}/>
             <Route path="*" element={<ErrorView />}/> */}
             <Route path="/" element={<Grid />}/>
+            <Route path="/login" element={<Login />}/>
           </Routes>
         </div>
         

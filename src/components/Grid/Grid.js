@@ -5,7 +5,7 @@ const Grid = () => {
     return (
         <section className="section-grid">
             <div className="shell">
-                <div className="section__head">
+                <div className="section__head"> 
                     <h2>Recipies</h2>
                 </div>
 

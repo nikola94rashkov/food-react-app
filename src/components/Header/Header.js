@@ -10,7 +10,7 @@ const Header = () => {
     };
 
     const guestNavigation = (
-        <li><Link to="/login">Sign up</Link></li>
+        <li><Link to="/login">Log in</Link></li>
     );
 
     const userNavigation = (
