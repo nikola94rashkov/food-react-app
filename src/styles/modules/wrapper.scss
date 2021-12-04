@@ -1,0 +1,11 @@
+// Wrapper  
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .wrapper__inner {
+        flex-grow: 1;
+    }
+}

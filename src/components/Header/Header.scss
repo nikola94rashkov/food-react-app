@@ -1,6 +1,53 @@
 @import '../../styles/load.scss';
 
+// header
+
 .header {
     padding: 15px 0;
     background-color: $c-orange;
+
+    a {
+        text-decoration: none;
+    }
+
+    .header__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+//  logo
+
+.logo {
+    display: inline-block;
+    font-weight: 600;
+    font-family: $ff-cursive;
+    font-size: 30px;
+
+    &::first-letter {
+        font-size: 70px;
+        float: left;
+        line-height: 1;
+    }
+
+    span {
+        display: inline-block;
+        margin-left: -26px;
+    }
+
+    sup img {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+//  nav
+
+.nav {
+    font-weight: 700;
+
+    ul {}
+    ul li {}
 }

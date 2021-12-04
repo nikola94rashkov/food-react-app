@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Header.scss'
+import logo from '../../images/Pizza-Slice-in-Tango-Colors.svg';
 
 const Header = (user) => {
     const guestNavigation = (
@@ -18,7 +19,7 @@ const Header = (user) => {
             <div className="shell">
                 <div className="header__inner">
                     <div className="header__logo">
-                        <Link to="/" className="logo">Food <span>Addicted</span></Link>
+                        <Link to="/" className="logo">Food <br/><span>ans <sup><img src={logo} alt="logo" /></sup></span></Link>
                     </div>
 
                     <div className="header__nav">

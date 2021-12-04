@@ -5,19 +5,21 @@ import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <>
+    <div className="wrapper">
       <Header/>
-
-     {/* <Routes>
-        <Route path="/" element={<HomeView />}></Route>
-        <Route path="/blogs/details" element={<BlogDetailsView />} />
-        <Route path="/login" element={<LoginView />}/>
-        <Route path="/registration" element={<RegistrationView />}/>
-        <Route path="*" element={<ErrorView />}/>
-      </Routes> */}
-
+      
+        <div className="wrapper__inner">
+        {/* <Routes>
+            <Route path="/" element={<HomeView />}></Route>
+            <Route path="/blogs/details" element={<BlogDetailsView />} />
+            <Route path="/login" element={<LoginView />}/>
+            <Route path="/registration" element={<RegistrationView />}/>
+            <Route path="*" element={<ErrorView />}/>
+          </Routes> */}
+        </div>
+        
       <Footer/>
-    </>
+    </div>
   );
 }
 
