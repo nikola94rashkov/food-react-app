@@ -2,4 +2,14 @@
 
 .footer {
     align-self: flex-end;
+    padding: 15px 0;
+    background-color: $c-orange;
+    color: $c-black;
+    text-align: center;
+    font-weight: 600;
+
+    a {
+        text-decoration: none;
+        color: $c-yellow;
+    }
 }

@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
+
 import './Header.scss'
+
 import logo from '../../images/Pizza-Slice-in-Tango-Colors.svg';
 
-const Header = (user) => {
+const Header = () => {
+    const user = {
+        'email': ''
+    };
+
     const guestNavigation = (
         <li><Link to="/login">Sign up</Link></li>
     );

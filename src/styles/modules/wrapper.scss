@@ -5,6 +5,10 @@
     display: flex;
     flex-direction: column;
 
+    > * {
+        width: 100%;
+    }
+
     .wrapper__inner {
         flex-grow: 1;
     }

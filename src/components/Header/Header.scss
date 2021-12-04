@@ -3,7 +3,7 @@
 // header
 
 .header {
-    padding: 15px 0;
+    padding: 10px 0;
     background-color: $c-orange;
 
     a {
@@ -24,17 +24,17 @@
     display: inline-block;
     font-weight: 600;
     font-family: $ff-cursive;
-    font-size: 30px;
+    font-size: 25px;
 
     &::first-letter {
-        font-size: 70px;
+        font-size: 60px;
         float: left;
         line-height: 1;
     }
 
     span {
         display: inline-block;
-        margin-left: -26px;
+        margin-left: -25px;
     }
 
     sup img {
@@ -47,7 +47,18 @@
 
 .nav {
     font-weight: 700;
+    text-transform: capitalize;
+    line-height: 1;
 
-    ul {}
-    ul li {}
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -10px;
+    }
+
+    ul li {
+        padding: 10px;
+        margin: 0;
+        
+    }
 }

@@ -1,11 +1,11 @@
 body {
 	min-width: 320px;
-	background: #fff;
+	background: rgba($c-yellow, 0.4);
 	font-family: $ff-sans-serif;
 	font-weight: $font-weight-base;
 	font-size: $font-size-base;
 	line-height: $line-height-base;
-	color: #000;
+	color: $c-black;
 }
 
 a {
