@@ -1,0 +1,12 @@
+@import '../../styles/load.scss';
+
+.section-grid {
+    .section__head {
+        text-align: center;
+        margin-bottom: 30px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
