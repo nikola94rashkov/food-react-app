@@ -1,14 +1,12 @@
 import { login } from '../../services/firebase';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
-
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
 

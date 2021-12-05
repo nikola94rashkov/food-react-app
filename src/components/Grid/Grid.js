@@ -6,7 +6,7 @@ const Grid = () => {
         <section className="section-grid">
             <div className="shell">
                 <div className="section__head"> 
-                    <h2>Recipies</h2>
+                    <h2>Recipes</h2>
                 </div>
 
                 <div className="section__body">
