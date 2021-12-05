@@ -5,6 +5,7 @@ import './Login.scss';
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
+    const [formClass, setFormClass] = useState('');
     const navigate = useNavigate();
 
     const onSubmitHandler = async (e) => {
@@ -19,8 +20,8 @@ const Login = () => {
         try {
             await login(email, password);
             navigate('/dashboard')
-        } catch {
-            console.log('error')
+        } catch(error) {
+            setFormClass('error')
         }
         setLoading(false);
     }
@@ -35,7 +36,7 @@ const Login = () => {
                 </div>
 
                 <div className="section__body">
-                   <div className="form">
+                   <div className={`form ${formClass}`}>
                         <form onSubmit={onSubmitHandler}>
                             <div className="form__body">
                                 <div className="form__row">
@@ -59,6 +60,8 @@ const Login = () => {
                                 <p>
                                     Not registered? <Link to="/register">Create an account</Link> 
                                 </p>
+
+                                <h6 className="hidden">Invalid email or password</h6>
                             </div>
                         </form>
                    </div>

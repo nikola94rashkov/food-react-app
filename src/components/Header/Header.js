@@ -15,8 +15,8 @@ const Header = () => {
         try {
             await logout(); 
             navigate('/');
-        } catch {
-            console.log('error')            
+        } catch (error){
+            console.log(error)            
         }
     }
 
