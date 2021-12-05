@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../../services/firebase';
-import { useAuth } from '../../hooks/hooks';
+import { useAuth } from '../../hooks/useAuth';
 import './Header.scss'
 
 import logo from '../../images/Pizza-Slice-in-Tango-Colors.svg';
