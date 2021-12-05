@@ -1,4 +1,4 @@
-
+import './Register.scss';
 
 const Register = () => {
     return (

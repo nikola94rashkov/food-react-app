@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 
 import Grid from './components/Grid/Grid';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 function App() {
   return (
@@ -13,13 +14,11 @@ function App() {
       
         <div className="wrapper__inner">
           <Routes>
-            {/* <Route path="/" element={<HomeView />}></Route>
-            <Route path="/blogs/details" element={<BlogDetailsView />} />
-            <Route path="/login" element={<LoginView />}/>
-            <Route path="/registration" element={<RegistrationView />}/>
-            <Route path="*" element={<ErrorView />}/> */}
+            {/* <Route path="/blogs/details" element={<BlogDetailsView />} /> */}
+            {/* <Route path="*" element={<ErrorView />}/> */}
             <Route path="/" element={<Grid />}/>
             <Route path="/login" element={<Login />}/>
+            <Route path="/register" element={<Register />}/>
           </Routes>
         </div>
         
