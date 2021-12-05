@@ -1,13 +1,24 @@
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import { logout } from '../../services/firebase';
+import { useAuth } from '../../hooks/hooks';
 import './Header.scss'
 
 import logo from '../../images/Pizza-Slice-in-Tango-Colors.svg';
 
 const Header = () => {
-    const user = {
-        'email': ''
-    };
+    const user = useAuth();
+    const navigate = useNavigate();
+
+    const onClickHandler = async (e) => {
+        e.preventDefault();
+
+        try {
+            await logout(); 
+            navigate('/');
+        } catch {
+            console.log('error')            
+        }
+    }
 
     const guestNavigation = (
         <li><Link to="/login">Log in</Link></li>
@@ -16,7 +27,7 @@ const Header = () => {
     const userNavigation = (
         <>
             <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/logout">Log out</Link></li>
+            <li><a href="" onClick={onClickHandler}>Log out</a></li>
         </>
     );
 
@@ -31,7 +42,7 @@ const Header = () => {
                     <div className="header__nav">
                         <nav className="nav">
                             <ul>
-                                { user.email ? 
+                                { user?.email ? 
                                     userNavigation :
                                     guestNavigation
                                 }

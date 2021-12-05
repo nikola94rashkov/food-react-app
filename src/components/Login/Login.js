@@ -1,7 +1,32 @@
+import { login } from '../../services/firebase';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+
 import { Link } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        let formData = new FormData(e.currentTarget);
+
+        let email = formData.get('email')        
+        let password = formData.get('password')        
+
+        setLoading(true);
+        try {
+            await login(email, password);
+            navigate('/dashboard')
+        } catch {
+            console.log('error')
+        }
+        setLoading(false);
+    }
+    
     return (
         <section className="section-form">
             <div className="shell">
@@ -13,7 +38,7 @@ const Login = () => {
 
                 <div className="section__body">
                    <div className="form">
-                        <form action="">
+                        <form onSubmit={onSubmitHandler}>
                             <div className="form__body">
                                 <div className="form__row">
                                     <label htmlFor="email">Email</label>
@@ -29,7 +54,7 @@ const Login = () => {
                             </div>
 
                             <div className="form__actions">
-                                <button className="btn">
+                                <button disabled={loading} className="btn">
                                     Submit
                                 </button>
 
