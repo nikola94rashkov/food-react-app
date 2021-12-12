@@ -6,10 +6,10 @@ export const useAuth = () => {
     const [currUser, setCurrUser] = useState();
 
     useEffect(() => {
-        const unsub = onAuthStateChanged(auth, user => setCurrUser(user));
+        const unsub = onAuthStateChanged(auth, async user => setCurrUser(user));
 
         return unsub;
-    }, [])
+    }, [currUser])
 
     return currUser
 }

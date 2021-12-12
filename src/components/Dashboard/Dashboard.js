@@ -1,15 +1,15 @@
-import { useAuth } from '../../hooks/useAuth';
+// import { useAuth } from '../../hooks/useAuth';
 import { Outlet , Link } from 'react-router-dom';
 
 const Dashboard = () => {
-    const currentUser = useAuth();
+    // const currentUser = useAuth();
 
     return (
         <section className="section-dashboard">
             <div className="shell">
                 <div className="section__head">
                     <h2>
-                        Hello { currentUser?.email }
+                        {/* Hello { currentUser?.email } */}
                     </h2>
                 </div>
 

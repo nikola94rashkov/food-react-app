@@ -1,3 +1,4 @@
+import { AuthProvider } from './context/AuthContext';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
@@ -11,18 +12,34 @@ import Error from './components/Error/Error';
 import CreateForm from './components/CreateForm/CreateForm';
 import EditForm from './components/EditForm/EditForm';
 
+import RequireGuest from './components/RequireGuest/RequireGuest';
+import RequireAuth from './components/RequireAuth/RequireAuth';
+
 function App() {
   return (
     <div className="wrapper">
-      <Header/>
+      <AuthProvider>
+        <Header/>
       
         <div className="wrapper__inner">
           <Routes>
             {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
             <Route path="/" element={<Grid />}/>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/register" element={<Register />}/>
-            <Route path="/dashboard/*" element={<Dashboard />}>
+            <Route path="/login" element={
+              <RequireGuest>
+                <Login />
+              </RequireGuest>
+            }/>
+            <Route path="/register" element={
+              <RequireGuest>
+                <Register />
+              </RequireGuest>
+            }/>
+            <Route path="/dashboard/*" element={
+              <RequireAuth redirectTo="/login">
+                <Dashboard />
+              </RequireAuth>
+            }>
                 <Route path="add" element={<CreateForm/>} />
                 <Route path="edit" element={<EditForm/>}/>
             </Route>
@@ -30,7 +47,8 @@ function App() {
           </Routes>
         </div>
         
-      <Footer/>
+        <Footer/>
+      </AuthProvider>
     </div>
   );
 }
