@@ -1,15 +1,16 @@
-// import { useAuth } from '../../hooks/useAuth';
 import { Outlet , Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 const Dashboard = () => {
-    // const currentUser = useAuth();
+    const { user } = useContext(AuthContext);
 
     return (
         <section className="section-dashboard">
             <div className="shell">
                 <div className="section__head">
                     <h2>
-                        {/* Hello { currentUser?.email } */}
+                        Hello { user?.email }
                     </h2>
                 </div>
 

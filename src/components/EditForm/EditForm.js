@@ -1,6 +1,8 @@
 const EditForm = () => {
     return (
         <div className="form">
+            <h2>Edit Recipe</h2>
+            
             <form>
                 <div className="form__body">
                     <div className="form__row">

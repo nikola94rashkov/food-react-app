@@ -1,11 +1,8 @@
-import { useAuth } from '../../hooks/useAuth';
-
 const CreateForm = () => {
-    const currentUser = useAuth();
 
     return (
         <div className="form">
-            <p>{currentUser?.id}</p>
+            <h2>Create recipe</h2>
 
             <form>
                 <div className="form__body">

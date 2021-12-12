@@ -1,12 +1,14 @@
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
+
 import { logout } from '../../services/firebase';
-import { useAuth } from '../../hooks/useAuth';
+import { AuthContext } from '../../context/AuthContext';
 import './Header.scss'
 
 import logo from '../../images/Pizza-Slice-in-Tango-Colors.svg';
 
 const Header = () => {
-    const user = useAuth();
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onClickHandler = async (e) => {
