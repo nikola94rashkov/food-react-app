@@ -6,6 +6,10 @@ import {
   signInWithEmailAndPassword
 } from 'firebase/auth';
 
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBgTWvnEJS0YsN41GZr5jmANKHnzUO0eDU",
   authDomain: "react-recipies-app.firebaseapp.com",
@@ -17,6 +21,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+
+// firebase/auth functions
+
 export const auth = getAuth();
 
 export const signup = (email, password) => createUserWithEmailAndPassword(auth, email, password);
@@ -24,3 +31,13 @@ export const signup = (email, password) => createUserWithEmailAndPassword(auth, 
 export const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 export const logout = () => signOut(auth);
+
+// firestore functions
+
+export const db = getFirestore(app);
+
+export const docRef = async (collectionData) => await addDoc(collection(db, 'articles'), collectionData);
+
+// storage functions
+
+export const storage = getStorage(app);

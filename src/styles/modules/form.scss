@@ -25,6 +25,7 @@
         font-weight: 600;
     }
 
+    textarea,
     input {
         width: 100%;
         display: block;
@@ -38,6 +39,10 @@
         &:focus {
             color: $c-pink;
         }
+    }
+
+    textarea {
+        height: 200px;
     }
 
     .form__actions {
