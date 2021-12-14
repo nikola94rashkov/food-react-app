@@ -1,19 +1,17 @@
 import { Link } from 'react-router-dom';
 import './GridItem.scss';
 
-const GridItem = (
-    data
-) => {
+const GridItem = ({ card }) => {
     return (
         <article className="article-recipe">
-            <Link to={`/recipe/${data.id}`}></Link>
+            <Link to={`/${card?.id}`}></Link>
 
             <div className="article__image image-fit">
-                <img src={data.imageUrl} alt="recipe" />
+                <img src={card?.imageUrl} alt="recipe" />
             </div>
 
             <div className="article__content">
-                <h5>{data.title}</h5>
+                <h5>{card?.title}</h5>
             </div>
         </article> 
     );

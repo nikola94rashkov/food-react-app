@@ -6,9 +6,9 @@ import {
   signInWithEmailAndPassword
 } from 'firebase/auth';
 
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, doc, getDoc } from 'firebase/firestore';
 
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgTWvnEJS0YsN41GZr5jmANKHnzUO0eDU",
@@ -37,6 +37,18 @@ export const logout = () => signOut(auth);
 export const db = getFirestore(app);
 
 export const docRef = async (collectionData) => await addDoc(collection(db, 'articles'), collectionData);
+
+export const getDocumentById = async (id) => {
+  const docRefData = doc(db, "articles", id);
+  const docSnap = await getDoc(docRefData);  
+
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    console.log("No such document!");
+  }
+}
+
 
 // storage functions
 

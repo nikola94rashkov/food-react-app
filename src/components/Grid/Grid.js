@@ -2,22 +2,22 @@ import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../../services/firebase';
 import GridItem from '../GridItem/GridItem';
+import GridColumns from './GridColumns/GridColumns';
 import './Grid.scss';
 
 const Grid = () => {
-    const [articles, setArticles] = useState([]);
+    const [gridCards, setGridCards] = useState([]);
+    const articlesCollectionRef = collection(db, 'articles');
 
-    useEffect(() =>{
-        fetchArticles();
+    useEffect(() => {
+        const getCollection = async () => {
+            const data = await getDocs(articlesCollectionRef);
+
+            setGridCards(data.docs.map(doc => ({...doc.data(), id: doc.id})))
+        }
+
+        getCollection();
     }, [])
-
-    const fetchArticles = async() =>{
-        const querySnapshot = await getDocs(collection(db, "articles"));
-
-        querySnapshot.forEach((doc) => {
-            setArticles([...articles, doc.data()])
-        });
-    }
 
     return (
         <section className="section-grid">
@@ -29,9 +29,11 @@ const Grid = () => {
                 <div className="section__body">
                     <div className="grid">
                         <div className="grid__row">
-                            <div className="grid__col grid__col--1of4">
-                                { articles.map(x => <GridItem data={x}/>) }
-                            </div>
+                            { 
+                                gridCards.length > 0 
+                                    ? gridCards.map( card =>  <GridColumns><GridItem card={card} /></GridColumns> ) 
+                                    : <p>no recipes yet</p>
+                            }
                         </div>
                     </div>
                 </div>

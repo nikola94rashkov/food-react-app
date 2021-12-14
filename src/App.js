@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 import Grid from './components/Grid/Grid';
+import GridItemDetails from './components/GridItemDetails/GridItemDetails';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -23,7 +24,7 @@ function App() {
       
         <div className="wrapper__inner">
           <Routes>
-            {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
+            <Route path="/:recipeId" element={<GridItemDetails />} />
             <Route path="/" element={<Grid />}/>
             <Route path="/login" element={
               <RequireGuest>
