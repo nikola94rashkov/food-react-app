@@ -1,9 +1,39 @@
-const EditForm = () => {
-    const onSubmitHandler = (e) => {
+import { useState } from 'react';
+import { uploadImageToStorage, updateDocumentValues } from '../../services/firebase';
+import { useParams } from 'react-router-dom';
+// import { AuthContext } from '../../context/AuthContext';
 
+const EditForm = () => {
+    const [imageUrl, setImageUrl] = useState('');
+    // const { recipeId } = useParams();
+
+    // const { user } = useContext(AuthContext);
+    // const userId = user.uid;
+
+    const onChangeHandler = () => {
+        e.preventDefault();
+        const image = e.target.files[0];
+        uploadImageToStorage(image, setImageUrl);
     }
 
-    const onChangeHandler = () => {}
+    const onSubmitHandler = (e) => {
+
+        e.preventDefault();
+
+        let formData = new FormData(e.currentTarget);
+
+        let title = formData.get('title');
+        let description = formData.get('description');
+
+        const updatedData = {
+            description,
+            imageUrl,
+            userId,
+            title
+        }
+
+        updateDocumentValues(updatedData, );
+    }
 
     return (
         <div className="form">

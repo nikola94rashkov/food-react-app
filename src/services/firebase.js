@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {  getAuth,  createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, addDoc, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, collection, doc, addDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { getStorage, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const firebaseConfig = {
@@ -42,6 +42,10 @@ export const getDocumentById = async (id) => {
   }
 }
 
+export const updateDocumentValues = async (options, id) => {
+  const updateDocRef = doc(db, "articles", id);
+  await updateDoc(options, updateDocRef);
+}
 
 // storage functions
 
