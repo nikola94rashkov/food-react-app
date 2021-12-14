@@ -1,20 +1,32 @@
 const EditForm = () => {
+    const onSubmitHandler = (e) => {
+
+    }
+
+    const onChangeHandler = () => {}
+
     return (
         <div className="form">
             <h2>Edit Recipe</h2>
             
-            <form>
+            <form onSubmit={onSubmitHandler}>
                 <div className="form__body">
                     <div className="form__row">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="imageUrl">image url</label>
 
-                        <input type="email" name="email" id="email" placeholder />
+                        <input type="file" onChange={onChangeHandler} name="imageUrl" id="imageUrl" accept="image/png, image/jpeg" />
                     </div>
 
                     <div className="form__row">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="title">Title</label>
 
-                        <input type="password" name="password" id="password" />
+                        <input type="title" name="title" id="title" />
+                    </div>
+
+                    <div className="form__row">
+                        <label htmlFor="description">Description</label>
+
+                        <textarea type="description" name="description" id="description" />
                     </div>
                 </div>
 
@@ -23,7 +35,7 @@ const EditForm = () => {
                         Submit
                     </button>
                 </div>
-            </form>
+            </form>        
         </div>
     );
 }

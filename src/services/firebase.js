@@ -1,14 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signOut, 
-  signInWithEmailAndPassword
-} from 'firebase/auth';
-
+import {  getAuth,  createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, collection, addDoc, doc, getDoc } from 'firebase/firestore';
-
-import { getStorage } from "firebase/storage";
+import { getStorage, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgTWvnEJS0YsN41GZr5jmANKHnzUO0eDU",
@@ -53,3 +46,20 @@ export const getDocumentById = async (id) => {
 // storage functions
 
 export const storage = getStorage(app);
+
+export const uploadImageToStorage = (image, callback) => {
+  if(!image) return;
+
+  const storageRef = ref(storage, `/images/${image.name}`);
+  const uploadTask = uploadBytesResumable(storageRef, image);
+
+  uploadTask.on('state_change', (snapshot) => {
+      console.log(snapshot)
+  }, 
+  (err) => console.log(err),
+  () => {
+      getDownloadURL(uploadTask.snapshot.ref)
+      .then(url => callback(url))
+  }
+  );
+}

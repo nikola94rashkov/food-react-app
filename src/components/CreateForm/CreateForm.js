@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage, docRef } from '../../services/firebase';
+import { docRef, uploadImageToStorage } from '../../services/firebase';
 import { AuthContext } from '../../context/AuthContext';
 
 const CreateForm = () => {
@@ -12,27 +11,8 @@ const CreateForm = () => {
     const onChangeHandler = (e) => {
         e.preventDefault();
         const image = e.target.files[0];
-        uploadImageHandler(image);
-
-        console.log(uploadImageHandler(image))
+        uploadImageToStorage(image, setImageUrl);
     };
-
-    const uploadImageHandler = (image) => {
-        if(!image) return;
-
-        const storageRef = ref(storage, `/images/${image.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, image);
-
-        uploadTask.on('state_change', (snapshot) => {
-            console.log(snapshot)
-        }, 
-        (err) => console.log(err),
-        () => {
-            getDownloadURL(uploadTask.snapshot.ref)
-            .then(url => setImageUrl(url))
-        }
-        );
-    }
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -40,7 +20,6 @@ const CreateForm = () => {
         let formData = new FormData(e.currentTarget);
 
         let title = formData.get('title');
-        // let imageUrl = formData.get('imageUrl');
         let description = formData.get('description');
 
         const createFormData = {
@@ -51,6 +30,8 @@ const CreateForm = () => {
         }
 
         docRef(createFormData);
+
+        e.currentTarget.reset();
     }
 
     return (
@@ -63,7 +44,6 @@ const CreateForm = () => {
                         <label htmlFor="imageUrl">image url</label>
 
                         <input type="file" onChange={onChangeHandler} name="imageUrl" id="imageUrl" accept="image/png, image/jpeg" />
-                        {/* <input type="text" name="imageUrl" id="imageUrl" /> */}
                     </div>
 
                     <div className="form__row">
