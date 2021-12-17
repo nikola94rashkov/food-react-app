@@ -1,23 +1,32 @@
-import { useState } from 'react';
-import { uploadImageToStorage, updateDocumentValues } from '../../services/firebase';
+import { useState, useContext, useEffect } from 'react';
+import { uploadImageToStorage, updateDocumentValues, getDocumentById } from '../../services/firebase';
 import { useParams } from 'react-router-dom';
-// import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const EditForm = () => {
     const [imageUrl, setImageUrl] = useState('');
-    // const { recipeId } = useParams();
+    const [details, setDetails] = useState({});
+    const { recipeId } = useParams();
 
-    // const { user } = useContext(AuthContext);
-    // const userId = user.uid;
+    const { user } = useContext(AuthContext);
+    const userId = user?.uid;
 
-    const onChangeHandler = () => {
+    useEffect(() => {
+        getDocumentById(recipeId)
+            .then(res => setDetails(res));
+    }, [recipeId]);
+
+    useEffect(() => {
+        setImageUrl(details.imageUrl);
+    }, [details]);
+
+    const onChangeHandler = (e) => {
         e.preventDefault();
         const image = e.target.files[0];
         uploadImageToStorage(image, setImageUrl);
     }
 
     const onSubmitHandler = (e) => {
-
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
@@ -26,13 +35,12 @@ const EditForm = () => {
         let description = formData.get('description');
 
         const updatedData = {
-            description,
-            imageUrl,
-            userId,
-            title
+            "description": description,
+            "imageUrl": imageUrl,
+            "title": title
         }
 
-        updateDocumentValues(updatedData, );
+        updateDocumentValues(updatedData, recipeId);
     }
 
     return (
@@ -44,19 +52,19 @@ const EditForm = () => {
                     <div className="form__row">
                         <label htmlFor="imageUrl">image url</label>
 
-                        <input type="file" onChange={onChangeHandler} name="imageUrl" id="imageUrl" accept="image/png, image/jpeg" />
+                        <input type="file" onChange={onChangeHandler} name="imageUrl" id="imageUrl" accept="image/png, image/jpeg"/>
                     </div>
 
                     <div className="form__row">
                         <label htmlFor="title">Title</label>
 
-                        <input type="title" name="title" id="title" />
+                        <input type="title" defaultValue={details.title} name="title" id="title" required/>
                     </div>
 
                     <div className="form__row">
                         <label htmlFor="description">Description</label>
 
-                        <textarea type="description" name="description" id="description" />
+                        <textarea type="description" name="description" defaultValue={details.description} id="description" required/>
                     </div>
                 </div>
 

@@ -16,4 +16,9 @@
         width: 100%;
         text-align: center;
     }
+
+    .article-recipe .btn--red,
+    .article-recipe .article__actions {
+        display: none;
+    }
 }

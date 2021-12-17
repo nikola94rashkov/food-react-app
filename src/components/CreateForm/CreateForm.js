@@ -6,7 +6,7 @@ const CreateForm = () => {
     const [imageUrl, setImageUrl] = useState('');
 
     const { user } = useContext(AuthContext);
-    const userId = user.uid;
+    const userId = user?.uid;
 
     const onChangeHandler = (e) => {
         e.preventDefault();

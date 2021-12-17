@@ -42,7 +42,7 @@ function App() {
               </RequireAuth>
             }>
                 <Route path="add" element={<CreateForm/>} />
-                <Route path="edit" element={<EditForm/>}/>
+                <Route path="edit/:recipeId" element={<EditForm/>}/>
             </Route>
             <Route path="*" element={<Error />}/>
           </Routes>

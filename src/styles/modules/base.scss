@@ -119,3 +119,14 @@ blockquote:last-child {
 		background-color: $c-pink;
 	}
 }
+
+.btn--red {
+	display: inline-block;
+	padding: 10px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: unset;
+	background-color: $c-red;
+	z-index: 15;
+}

@@ -1,6 +1,7 @@
 @import '../../styles/load.scss';
 
 .article-recipe {
+    width: 100%;
     position: relative;
     box-shadow: 0 0px 10px 0px rgba($c-black, 0.1);
     transition: all $t-duration;
@@ -35,5 +36,10 @@
     .article__content {
         padding: 20px 15px;
         text-align: center;
+    }
+
+    .article__actions {
+        position: relative;
+        z-index: 15;
     }
 }

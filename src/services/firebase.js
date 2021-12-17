@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {  getAuth,  createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, doc, addDoc, getDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, collection, doc, addDoc, getDoc, updateDoc, deleteDoc ,query, where, getDocs } from 'firebase/firestore';
 import { getStorage, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const firebaseConfig = {
@@ -44,7 +44,22 @@ export const getDocumentById = async (id) => {
 
 export const updateDocumentValues = async (options, id) => {
   const updateDocRef = doc(db, "articles", id);
-  await updateDoc(options, updateDocRef);
+
+  await updateDoc(updateDocRef, options);
+}
+
+export const getCurrentUserArticles = async (userId) => {
+   const q = query(collection(db, "articles"), where("userId", "==", userId))
+
+   const querySnapshot = await getDocs(q);
+
+   return querySnapshot;
+}
+
+export const deleteCurrentRecord = async (id) => {
+  const deleteDocRef = doc(db, "articles", id);
+  
+  await deleteDoc(deleteDocRef)
 }
 
 // storage functions
