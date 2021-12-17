@@ -1,12 +1,13 @@
 import { useState, useContext, useEffect } from 'react';
 import { uploadImageToStorage, updateDocumentValues, getDocumentById } from '../../services/firebase';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
 const EditForm = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [details, setDetails] = useState({});
     const { recipeId } = useParams();
+    const navigate = useNavigate();
 
     const { user } = useContext(AuthContext);
     const userId = user?.uid;
@@ -41,6 +42,10 @@ const EditForm = () => {
         }
 
         updateDocumentValues(updatedData, recipeId);
+
+        e.currentTarget.reset();
+
+        navigate('/dashboard/');
     }
 
     return (

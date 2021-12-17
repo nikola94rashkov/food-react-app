@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import {  getAuth,  createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, doc, addDoc, getDoc, updateDoc, deleteDoc ,query, where, getDocs } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, collection, doc, addDoc, getDoc, updateDoc, deleteDoc, query, where, getDocs, onSnapshot } from 'firebase/firestore';
 import { getStorage, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const firebaseConfig = {
@@ -54,6 +54,19 @@ export const getCurrentUserArticles = async (userId) => {
    const querySnapshot = await getDocs(q);
 
    return querySnapshot;
+}
+
+export const getDynamicUserArticles = async (id, callback) => {
+  const q = query(collection(db, "articles"), where("userId", "==", id));
+  
+  onSnapshot(q, (snapshot) => {
+    const array = [];
+
+    snapshot.docs.map(doc => array.push({...doc.data(), id: doc.id}))
+
+    callback(array)
+  })
+
 }
 
 export const deleteCurrentRecord = async (id) => {
