@@ -44,6 +44,8 @@ const CreateForm = () => {
                         <label htmlFor="imageUrl">image url</label>
 
                         <input type="file" onChange={onChangeHandler} name="imageUrl" id="imageUrl" accept="image/*" />
+
+                        <span>accepts jpg and png format</span>
                     </div>
 
                     <div className="form__row">

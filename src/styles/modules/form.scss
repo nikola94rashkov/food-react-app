@@ -41,6 +41,15 @@
         }
     }
 
+    input + span {
+        display: inline-block;
+        margin-top: 5px;
+        color: $c-base;
+        text-transform: uppercase;
+        font-size: 10px;
+        border-bottom: 1px solid $c-red;
+    }
+
     textarea {
         height: 200px;
     }
