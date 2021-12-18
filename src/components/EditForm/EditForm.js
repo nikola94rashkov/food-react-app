@@ -57,7 +57,7 @@ const EditForm = () => {
                     <div className="form__row">
                         <label htmlFor="imageUrl">image url</label>
 
-                        <input type="file" onChange={onChangeHandler} name="imageUrl" id="imageUrl" accept="image/png, image/jpeg"/>
+                        <input type="file" onChange={onChangeHandler} name="imageUrl" id="imageUrl" accept="image/*"/>
                     </div>
 
                     <div className="form__row">
