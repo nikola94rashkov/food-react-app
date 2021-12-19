@@ -24,12 +24,10 @@ $c-red                      : #ff6666;
 
 $responsive-ios             : 812px;
 
-$breakpoints: (
-	mobile-small: 374px,
-	mobile-medium: 575px,
-	mobile: 767px,
-	admin-bar: 782px,
-	tablet: 1023px,
-	small-desktop: 1199px,
-	large-desktop: 1399px
-);
+$mobile-small 				: 374px;
+$mobile-medium  			: 575px;
+$mobile  					: 767px;
+$admin-bar  				: 782px;
+$tablet 					: 1023px;
+$small-desktop  			: 1199px;
+$large-desktop  			: 1399px;

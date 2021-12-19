@@ -1,5 +1,5 @@
-@import './variables.scss';
 @import './mixins.scss';
+@import './variables.scss';
 
 .grid {
     .grid__row {
@@ -16,8 +16,8 @@
         width: 25%;
         display: flex;
 
-        @include breakpoint-down(mobile) {
-            width: 100%;
+        @include breakpoint-down-mobile {
+            width: 50%;
         }
     }
 }

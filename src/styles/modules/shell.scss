@@ -6,16 +6,6 @@
 	padding-right: $shell-gutter;
 	margin: 0 auto;
 	width: 100%;
-
-	@include breakpoint-down(tablet){
-		padding-left: $shell-gutter-tablet;
-		padding-right: $shell-gutter-tablet;
-	}
-
-	@include breakpoint-down(mobile){
-		padding-left: $shell-gutter-mobile;
-		padding-right: $shell-gutter-mobile;
-	}
 }
 
 /* Shell Fluid */
