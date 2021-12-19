@@ -31,7 +31,7 @@ const Grid = () => {
                         <div className="grid__row">
                             { 
                                 gridCards.length > 0 
-                                    ? gridCards.map( card =>  <GridColumns><GridItem card={card} /></GridColumns> ) 
+                                    ? gridCards.map( card =>  <GridColumns key={card.id}><GridItem card={card} /></GridColumns> ) 
                                     : <p>no recipes yet</p>
                             }
                         </div>

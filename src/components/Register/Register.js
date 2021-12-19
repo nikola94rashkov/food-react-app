@@ -6,6 +6,7 @@ import './Register.scss';
 
 const Register = () => {
     const [loading, setLoading] = useState(false);
+    const [formClass, setFormClass] = useState('');
     const navigate = useNavigate();
 
     const onSubmitHandler = async (e) => {
@@ -23,6 +24,7 @@ const Register = () => {
             navigate('/dashboard')
         } catch(error) {
             console.log(error)
+            setFormClass('error')
         }
 
         setLoading(false);
@@ -38,13 +40,13 @@ const Register = () => {
                 </div>
 
                 <div className="section__body">
-                    <div className="form" >
+                    <div className={`form ${formClass}`}>
                         <form onSubmit={onSubmitHandler}>
                             <div className="form__body">
                                 <div className="form__row">
                                     <label htmlFor="email">Email</label>
 
-                                    <input type="email" name="email" id="email" placeholder />
+                                    <input type="text" name="email" id="email" placeholder />
                                 </div>
 
                                 <div className="form__row">
@@ -58,6 +60,8 @@ const Register = () => {
                                 <button disabled={loading} className="btn">
                                     Submit
                                 </button>
+
+                                <h6 className="hidden">Invalid email format</h6>
                             </div>
                         </form>
                    </div>
