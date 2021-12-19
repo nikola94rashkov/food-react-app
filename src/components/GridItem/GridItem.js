@@ -7,9 +7,19 @@ import './GridItem.scss';
 const GridItem = ({ card }) => {
     const { user } = useContext(AuthContext);
 
+    const confirmPrompt = () => {
+        let prompt = window.confirm("Are you sure you want to delete this item!");
+
+        if(prompt) {
+            deleteCurrentRecord(card.id);
+        }
+
+        return;
+    }
+
     const actions = (
         <>
-            <button className="btn btn--red" onClick={() => deleteCurrentRecord(card.id)}>X</button>
+            <button className="btn btn--red" onClick={() => confirmPrompt()}>X</button>
 
             <div className="article__actions">
                 <Link className="btn" to={`edit/${card?.id}`}>Edit</Link>
