@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 @mixin breakpoint-up($name, $breakpoints: $breakpoints) {
 	$min: breakpoint-min($name, $breakpoints);
 
@@ -31,7 +33,7 @@
 
 /* example usage*/
 
-// @include breakpoint-up(mobile) {
+// @include breakpoint-down(mobile) {
 //  @content
 // }
 // @include breakpoint-up(mobile) {

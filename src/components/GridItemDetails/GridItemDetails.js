@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { getDocumentById } from '../../services/firebase';
 
 import './GridItemDetails.scss';
@@ -11,10 +11,10 @@ const GridItemDetails = () => {
     useEffect(() => {
         getDocumentById(recipeId)
             .then(res => setDetails(res));
-
     }, []);
-    
-    return (
+
+
+    const articleItemHtml = (
         <article className="article-single">
             <div className="shell">
                 <div className="article__image image-fit">
@@ -23,15 +23,21 @@ const GridItemDetails = () => {
 
                 <div className="article__body">
                     <h2>
-                        { details.title }
+                        { details?.title }
                     </h2>
 
                     <p>
-                        { details.description }
+                        { details?.description }
                     </p>
                 </div>
             </div>
         </article>
+    );
+    
+    return (
+        <>
+            { details ? articleItemHtml : <Navigate to="*" /> }
+        </>
     );
 }
 

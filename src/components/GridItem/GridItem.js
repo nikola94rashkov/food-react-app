@@ -19,7 +19,7 @@ const GridItem = ({ card }) => {
 
     return (
         <article className="article-recipe">
-            <Link to={`/${card?.id}`}></Link>
+            <Link to={`/recipes/${card?.id}`}></Link>
 
             <div className="article__image image-fit">
                 <img src={card?.imageUrl} alt="recipe" />

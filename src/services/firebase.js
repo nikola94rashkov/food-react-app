@@ -38,7 +38,7 @@ export const getDocumentById = async (id) => {
   if (docSnap.exists()) {
     return docSnap.data();
   } else {
-    console.log("No such document!");
+    return false;
   }
 }
 

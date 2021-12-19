@@ -24,7 +24,7 @@ function App() {
       
         <div className="wrapper__inner">
           <Routes>
-            <Route path="/:recipeId" element={<GridItemDetails />} />
+            <Route path="/recipes/:recipeId" element={<GridItemDetails />} />
             <Route path="/" element={<Grid />}/>
             <Route path="/login" element={
               <RequireGuest>
