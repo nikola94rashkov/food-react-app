@@ -10,6 +10,17 @@
         display: block;
     }
 
+    &.invalid-email {
+        .form__hint {
+            display: block;
+        }
+    }
+
+    .form__hint {
+        display: none;
+        color: $c-red !important;
+    }
+
     .form__row {
         margin-bottom: 20px;
 

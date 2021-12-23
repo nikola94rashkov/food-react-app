@@ -2,10 +2,12 @@ import { signup } from '../../services/firebase';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
+import { validateEmail } from '../../validations/validations';
+
 import './Register.scss';
 
 const Register = () => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [formClass, setFormClass] = useState('');
     const navigate = useNavigate();
 
@@ -17,8 +19,6 @@ const Register = () => {
         let email = formData.get('email')        
         let password = formData.get('password')        
 
-        setLoading(true);
-        
         try {
             await signup(email, password);
             navigate('/dashboard')
@@ -28,6 +28,15 @@ const Register = () => {
         }
 
         setLoading(false);
+    }
+
+    const onChangeHandler = (e) => {
+        if(validateEmail(e.target.value)) {
+            setLoading(false)
+            setFormClass('');
+        } else {
+            setFormClass('invalid-email');
+        }
     }
 
     return (
@@ -46,7 +55,11 @@ const Register = () => {
                                 <div className="form__row">
                                     <label htmlFor="email">Email</label>
 
-                                    <input type="text" name="email" id="email" placeholder />
+                                    <input type="text" onChange={onChangeHandler} name="email" id="email" placeholder />
+
+                                    <p className="form__hint">
+                                        This is not valid email address.
+                                    </p>
                                 </div>
 
                                 <div className="form__row">
@@ -61,7 +74,9 @@ const Register = () => {
                                     Submit
                                 </button>
 
-                                <h6 className="hidden">Invalid email format</h6>
+                                <h6 className="hidden">Email or password</h6>
+
+                                <p>Password need to contain last 6 characters</p>
                             </div>
                         </form>
                    </div>
