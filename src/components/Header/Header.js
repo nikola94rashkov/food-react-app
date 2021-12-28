@@ -35,10 +35,12 @@ const Header = () => {
 
     return (
         <header className="header">
+            <div className="header__bg"></div>
+            
             <div className="shell">
                 <div className="header__inner">
                     <div className="header__logo">
-                        <Link to="/" className="logo">Food <br/><span>ans <sup><img src={logo} alt="logo" /></sup></span></Link>
+                        <Link to="/" className="logo"><img src={logo} alt="logo" /></Link>
                     </div>
 
                     <div className="header__nav">

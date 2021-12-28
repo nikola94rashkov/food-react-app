@@ -19,7 +19,7 @@ const ListMyRecipes = ({uid}) => {
 
     return (
         <>
-            <Swiper navigation={true} className="mySwiper">
+            <Swiper navigation={true} className="mySwiper slider-article">
                 { 
                     listItems.length > 0 
                         ? listItems.map( card => <SwiperSlide key={card.id}><GridItem card={card} /></SwiperSlide> ) 

@@ -31,7 +31,37 @@
         background-color: $c-white;
     }
 
+    .search-list .article-recipe {
+        box-shadow: none !important;
+    }
+
     .search-list .article-recipe .article__image {
         display: none;
+    }
+
+    .search-list li {
+        padding: 0 10px;
+
+        &:hover {
+            background-color: rgba($c-orange, .3);
+        }
+    }
+
+    .search-list li + li .article__content {
+        border-top: 1px solid $c-black;
+    }
+
+    .search-list .article-recipe .article__content {
+        position: static;
+        bottom: auto;
+        left: auto;
+        color: $c-black;
+        padding: 10px 0;
+        text-align-last: left;
+        background-color: transparent;
+    }
+
+    .search-list .article-recipe h5 {
+        font-size: 18px;
     }
 }
