@@ -1,5 +1,6 @@
 import { useEffect,useState } from 'react';
 import { getDocumentByName } from '../../services/firebase';
+import { debounce } from '../../functions/debounce';
 import GridItem from '../GridItem/GridItem';
 
 import './Search.scss';
@@ -8,8 +9,12 @@ const Search = () => {
     const [value, setValue] = useState('');
     const [items, setItems] = useState([]);
 
+    const myEfficientFn = debounce(function() {
+        getDocumentByName(value.toLocaleLowerCase(), setItems);    
+    }, 250);
+
     useEffect(() => {
-        getDocumentByName(value.toLocaleLowerCase(), setItems)
+        myEfficientFn();
     }, [value])
 
     return (
