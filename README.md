@@ -40,5 +40,6 @@ To store your images, we use the [firebase cloud storage](https://firebase.googl
 - CRUD
 - Upload image from file.
 - Router guards
+- Firebase Search document by title.
 
 **The project functionalities are based on firebase. [Click here to see the demo](https://react-recipies-app.web.app/)**

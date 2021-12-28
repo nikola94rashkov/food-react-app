@@ -9,7 +9,7 @@ const Search = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        getDocumentByName(value, setItems)
+        getDocumentByName(value.toLocaleLowerCase(), setItems)
     }, [value])
 
     return (
