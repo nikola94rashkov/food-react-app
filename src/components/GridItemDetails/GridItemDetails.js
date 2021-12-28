@@ -10,7 +10,10 @@ const GridItemDetails = () => {
 
     useEffect(() => {
         getDocumentById(recipeId)
-            .then(res => setDetails(res));
+            .then(res => setDetails(res))
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
     }, []);
 
 

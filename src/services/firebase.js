@@ -42,6 +42,22 @@ export const getDocumentById = async (id) => {
   }
 }
 
+export const getDocumentByName = async (name, setFunction) => {
+  const q = query(collection(db, "articles"), where("title", ">=", name));
+  
+  onSnapshot(q, (snapshot) => {
+    const array = [];
+
+    if(name != '') {
+      snapshot.docs.map(doc => array.push({...doc.data(), id: doc.id}))
+
+      setFunction(array)
+    } else {
+      setFunction([])
+    }
+  })
+}
+
 export const updateDocumentValues = async (options, id) => {
   const updateDocRef = doc(db, "articles", id);
 

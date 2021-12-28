@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from '../../services/firebase';
 import GridItem from '../GridItem/GridItem';
 import GridColumns from './GridColumns/GridColumns';
+import Search from '../Search/Search';
 import './Grid.scss';
 
 const Grid = () => {
@@ -24,6 +25,10 @@ const Grid = () => {
             <div className="shell">
                 <div className="section__head"> 
                     <h2>Recipes</h2>
+                </div>
+
+                <div className="section__search">
+                    <Search/>
                 </div>
 
                 <div className="section__body">

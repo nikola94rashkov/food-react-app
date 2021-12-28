@@ -1,9 +1,13 @@
-import { useState, useContext } from 'react';
+import {useEffect,useState, useContext } from 'react';
 import { docRef, uploadImageToStorage } from '../../services/firebase';
 import { AuthContext } from '../../context/AuthContext';
 
 const CreateForm = () => {
     const [imageUrl, setImageUrl] = useState('');
+
+    useEffect(()=> {
+        window.scrollTo(0,0)
+    },[])
 
     const { user } = useContext(AuthContext);
     const userId = user?.uid;
@@ -19,7 +23,7 @@ const CreateForm = () => {
 
         let formData = new FormData(e.currentTarget);
 
-        let title = formData.get('title');
+        let title = formData.get('title').toLocaleLowerCase();
         let description = formData.get('description');
 
         const createFormData = {

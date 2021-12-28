@@ -14,11 +14,15 @@ const EditForm = () => {
 
     useEffect(() => {
         getDocumentById(recipeId)
-            .then(res => setDetails(res));
+            .then(res => setDetails(res))
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
     }, [recipeId]);
 
     useEffect(() => {
         setImageUrl(details.imageUrl);
+        window.scrollTo(0,0);
     }, [details]);
 
     const onChangeHandler = (e) => {
@@ -32,7 +36,7 @@ const EditForm = () => {
 
         let formData = new FormData(e.currentTarget);
 
-        let title = formData.get('title');
+        let title = formData.get('title').toLocaleLowerCase();
         let description = formData.get('description');
 
         const updatedData = {

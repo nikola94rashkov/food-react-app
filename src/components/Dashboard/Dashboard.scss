@@ -1,3 +1,6 @@
+@import '../../styles/modules/variables.scss';
+@import '../../styles/modules/mixins.scss';
+
 .section-dashboard {
     padding: 50px 0;
 
@@ -14,6 +17,10 @@
     .section__content {
         width: 50%;
         padding: 0 20px;
+
+        @include breakpoint-down-mobile {
+            width: 100%;
+        }
     }
 
     .section__nav {
@@ -29,6 +36,11 @@
     .section__list {
         padding: 0 20px;
         width: 50%;
+
+        @include breakpoint-down-mobile {
+            width: 100%;
+            margin-top: 30px;
+        }
     }
     .section__list ul {
         display: flex;

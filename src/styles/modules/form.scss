@@ -1,6 +1,12 @@
+@import './mixins.scss'; 
+
 .form {
     max-width: 500px;
     margin: 0 auto;
+
+    @include breakpoint-down-mobile {
+        max-width: 100%;
+    }
 
     &.error {
         color: $c-red !important;
