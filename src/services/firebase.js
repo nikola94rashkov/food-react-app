@@ -97,6 +97,13 @@ export const storage = getStorage(app);
 
 export const uploadImageToStorage = (image, callback) => {
   if(!image) return;
+  console.log(image);
+  if (image.size > 3000000 || image.type != "image/jpeg" || image.type != "image/png") {
+    console.log("here")
+    alert("Ivalid file");
+    return;
+  }
+  
 
   const storageRef = ref(storage, `/images/${image.name}`);
   const uploadTask = uploadBytesResumable(storageRef, image);
